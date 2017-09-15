@@ -1,6 +1,7 @@
 import { KEY_PREFIX } from './constants'
 
 export default function purgeStoredState (config, keys) {
+  console.warn("$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
   const storage = config.storage
   const keyPrefix = config.keyPrefix !== undefined ? config.keyPrefix : KEY_PREFIX
 
@@ -21,7 +22,8 @@ export default function purgeStoredState (config, keys) {
     })
   } else { // otherwise purge specified keys
     return Promise.all(keys.map((key) => {
-      return storage.removeItem(`${keyPrefix}${key}`, warnIfRemoveError(key))
+	  console.warn("purge",key)
+      return storage.removeItem(`${keyPrefix}${key}`, key, warnIfRemoveError(key))
     }))
   }
 }
