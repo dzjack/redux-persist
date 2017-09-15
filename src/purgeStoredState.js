@@ -23,7 +23,7 @@ export default function purgeStoredState (config, keys) {
   } else { // otherwise purge specified keys
     return Promise.all(keys.map((key) => {
 	  console.warn("purge",key)
-      return storage.removeItem(`${keyPrefix}${key}`, key, warnIfRemoveError(key))
+      return storage.removeItem(`${keyPrefix}${key}`, warnIfRemoveError(key))
     }))
   }
 }
